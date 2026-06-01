@@ -260,3 +260,54 @@ svg {
     margin-left: -4px;
 }
 
+/*Para CRONOGRAMA
+Detalle de tabla responsivo*/
+    #activityTable {
+        table-layout: fixed;
+        width: 100%;
+    }
+
+    #activityTable th,
+    #activityTable td {
+        vertical-align: middle;
+        white-space: normal;
+    }
+
+    #activityTable .col-numero {
+        width: 50px;
+    }
+
+    #activityTable .col-fecha {
+        width: 180px;
+    }
+
+    #activityTable .col-detalles {
+        width: auto;
+        word-wrap: break-word;
+        overflow-wrap: anywhere;
+    }
+
+    #activityTable .col-acciones {
+        width: 140px;
+    }
+
+    @media (max-width: 767px) {
+        #activityTable {
+            min-width: 0;
+        }
+
+        #activityTable .col-fecha {
+            width: 120px;
+        }
+
+        #activityTable .col-acciones {
+            width: 95px;
+        }
+
+        #activityTable .btn {
+            display: block;
+            width: 100%;
+            margin-bottom: 4px;
+            white-space: normal;
+        }
+    }

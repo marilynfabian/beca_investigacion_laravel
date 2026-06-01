@@ -70,24 +70,6 @@
                 <div class="x_panel">
                     <div class="x_content">
                         <br>
-
-                        <label>RU DEL ESTUDIANTE:</label>
-                        <input
-                            type="text"
-                            name="estudiante_ru"
-                            class="form-control"
-                            value="{{ old('estudiante_ru', $postulacion->estudiante_ru ?? '') }}"
-                            {{ $postulacion ? 'readonly' : 'required' }}
-                        >
-
-                        @if($postulacion)
-                            <small class="text-muted">
-                                El RU no se modifica en esta pantalla.
-                            </small>
-                        @endif
-
-                        <br><br>
-
                         <label for="titulo_proyecto">TÍTULO DEL PROYECTO:</label>
                         <br>
                         <small>(máximo 300 letras)</small>
@@ -111,14 +93,14 @@
                             <div id="alerts"></div>
 
                             <div class="btn-toolbar editor" data-role="editor-toolbar" data-target="#editor-one">
-                                <div class="btn-group">
+                                <div class="btn-group-text">
                                     <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font">
                                         <i class="fa fa-font"></i><b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu"></ul>
                                 </div>
 
-                                <div class="btn-group">
+                                <div class="btn-group-text">
                                     <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font Size">
                                         <i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b>
                                     </a>
@@ -129,28 +111,28 @@
                                     </ul>
                                 </div>
 
-                                <div class="btn-group">
+                                <div class="btn-group-text">
                                     <a class="btn" data-edit="bold" title="Bold"><i class="fa fa-bold"></i></a>
                                     <a class="btn" data-edit="italic" title="Italic"><i class="fa fa-italic"></i></a>
                                     <a class="btn" data-edit="strikethrough" title="Strikethrough"><i class="fa fa-strikethrough"></i></a>
                                     <a class="btn" data-edit="underline" title="Underline"><i class="fa fa-underline"></i></a>
                                 </div>
 
-                                <div class="btn-group">
+                                <div class="btn-group-text">
                                     <a class="btn" data-edit="insertunorderedlist" title="Bullet list"><i class="fa fa-list-ul"></i></a>
                                     <a class="btn" data-edit="insertorderedlist" title="Number list"><i class="fa fa-list-ol"></i></a>
                                     <a class="btn" data-edit="outdent" title="Reduce indent"><i class="fa fa-dedent"></i></a>
                                     <a class="btn" data-edit="indent" title="Indent"><i class="fa fa-indent"></i></a>
                                 </div>
 
-                                <div class="btn-group">
+                                <div class="btn-group-text">
                                     <a class="btn" data-edit="justifyleft" title="Align Left"><i class="fa fa-align-left"></i></a>
                                     <a class="btn" data-edit="justifycenter" title="Center"><i class="fa fa-align-center"></i></a>
                                     <a class="btn" data-edit="justifyright" title="Align Right"><i class="fa fa-align-right"></i></a>
                                     <a class="btn" data-edit="justifyfull" title="Justify"><i class="fa fa-align-justify"></i></a>
                                 </div>
 
-                                <div class="btn-group">
+                                <div class="btn-group-text">
                                     <a class="btn" data-edit="undo" title="Undo"><i class="fa fa-undo"></i></a>
                                     <a class="btn" data-edit="redo" title="Redo"><i class="fa fa-repeat"></i></a>
                                 </div>
@@ -164,7 +146,6 @@
                         </div>
 
                         <br>
-
                         <label>PDF DEL PERFIL:</label>
                         <br>
                         <small>

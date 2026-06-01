@@ -9,7 +9,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="{{ asset('images/img.jpg') }}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>BIENVENIDO</span>
@@ -25,54 +25,56 @@
               <div class="menu_section">
                 <h3>GENERAL</h3>
                 <ul class="nav side-menu">
-                  
-                  <li><a><i class="fa fa-home"></i> BECAS <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li>
-                    <a>
-                        BECA INVESTIGACION
+                  <li>
+                    <a href="javascript:void(0)">
+                        <i class="fa fa-home"></i> BECAS
                         <span class="fa fa-chevron-down"></span>
                     </a>
 
-    <ul class="nav child_menu">
+                    <ul class="nav child_menu">
+                        <li>
+                            <a href="javascript:void(0)">
+                                BECA INVESTIGACION
+                                <span class="fa fa-chevron-down"></span>
+                            </a>
 
-       <li class="sub_menu">
-    <a href="{{ isset($postulacion) ? route('formulario-postulacion.show', $postulacion->id) : '#' }}">
-        DATOS DE INVESTIGACION
-    </a>
-</li>
+                            <ul class="nav child_menu">
+                                <li class="sub_menu">
+                                    <a href="{{ isset($postulacion) ? route('formulario-postulacion.show', $postulacion->id) : '#' }}">
+                                        DATOS DE INVESTIGACION
+                                    </a>
+                                </li>
 
-<li class="sub_menu">
-    <a href="{{ isset($postulacion) ? route('cronograma.create', $postulacion->id) : '#' }}">
-        CRONOGRAMA DE ACTIVIDADES
-    </a>
-</li>
+                                <li class="sub_menu">
+                                    <a href="{{ isset($postulacion) ? route('cronograma.create', $postulacion->id) : '#' }}">
+                                        CRONOGRAMA DE ACTIVIDADES
+                                    </a>
+                                </li>
 
-<li class="sub_menu">
-    <a href="{{ isset($estudiante) ? route('curriculum.create', $estudiante->ru) : '#' }}">
-        CURRICULUM VITAE-C.V.
-    </a>
-</li>
+                                <li class="sub_menu">
+                                    <a href="{{ isset($estudiante) ? route('curriculum.create', $estudiante->ru) : '#' }}">
+                                        CURRICULUM VITAE-C.V.
+                                    </a>
+                                </li>
 
-<li class="sub_menu">
-    <a href="{{ isset($estudiante) ? route('historial.index', $estudiante->ru) : '#' }}">
-        HISTORIAL
-    </a>
-</li>
-
-    </ul>
-</li>  
+                                <li class="sub_menu">
+                                    <a href="{{ isset($estudiante) ? route('historial.index', $estudiante->ru) : '#' }}">
+                                        HISTORIAL
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
-                  </li>
-                </ul>
-
-                
-              </div>
-            </div>
-            <!-- /sidebar menu -->
-
-            <!-- /menu footer buttons -->
-           
-            <!-- /menu footer buttons -->
-          </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
+      </div>
+                        <!-- /sidebar menu -->
+
+                        <!-- /menu footer buttons -->
+                      
+                        <!-- /menu footer buttons -->
+                      </div>
+                    </div>

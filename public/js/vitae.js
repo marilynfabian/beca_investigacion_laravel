@@ -1,10 +1,5 @@
 (function ($) {
   "use strict";
-
- 
-  //  CONFIGURACIÓN DE SECCIONES
-  //  Cada sección declara sus campos: { id: string, label: string }
-  
   var sections = {
     "sec-1": {
       numero: 1,

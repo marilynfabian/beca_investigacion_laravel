@@ -10,13 +10,31 @@
 @section('content')
 @php
     $secciones = [
-        1 => ['titulo' => 'AUXILIAR DE DOCENCIA', 'icono' => 'fa-graduation-cap', 'campos' => ['campo_1' => 'Tiempo', 'campo_2' => 'Materia']],
-        2 => ['titulo' => 'DISERTANTE DE EVENTOS ACADÉMICOS', 'icono' => 'fa-microphone', 'campos' => ['campo_1' => 'Tipo de Evento', 'campo_2' => 'Tema de Evento']],
-        3 => ['titulo' => 'PARTICIPANTE EN EVENTOS ACADÉMICOS (CURSOS VARIOS)', 'icono' => 'fa-users', 'campos' => ['campo_1' => 'Tipo de Evento', 'campo_2' => 'Tema de Evento']],
-        4 => ['titulo' => 'PARTICIPANTE EN FERIAS CIENTÍFICAS', 'icono' => 'fa-flask', 'campos' => ['campo_1' => 'Nombre de la Feria', 'campo_2' => 'Tema Presentado']],
-        5 => ['titulo' => 'PRODUCCIÓN INTELECTUAL', 'icono' => 'fa-book', 'campos' => ['campo_1' => 'Documento Publicado']],
-        6 => ['titulo' => 'DISERTANTE CURSOS DE FORMACIÓN I+D', 'icono' => 'fa-lightbulb-o', 'campos' => ['campo_1' => 'Tema']],
-        7 => ['titulo' => 'PARTICIPANTE DE CURSOS DE FORMACIÓN I+D', 'icono' => 'fa-pencil', 'campos' => ['campo_1' => 'Evento']],
+        1 => ['titulo' => 'AUXILIAR DE DOCENCIA', 'icono' => 'fa-graduation-cap', 'campos' => [
+            'campo_1' => ['label' => 'Tiempo',   'placeholder' => 'Ej: 01/2016'],
+            'campo_2' => ['label' => 'Materia',  'placeholder' => 'Ej: Cálculo I'],
+        ]],
+        2 => ['titulo' => 'DISERTANTE DE EVENTOS ACADÉMICOS', 'icono' => 'fa-microphone', 'campos' => [
+            'campo_1' => ['label' => 'Tipo de Evento', 'placeholder' => 'Ej: Seminario / Curso / Taller'],
+            'campo_2' => ['label' => 'Tema de Evento', 'placeholder' => 'Ej: Inteligencia Artificial'],
+        ]],
+        3 => ['titulo' => 'PARTICIPANTE EN EVENTOS ACADÉMICOS (CURSOS VARIOS)', 'icono' => 'fa-users', 'campos' => [
+            'campo_1' => ['label' => 'Tipo de Evento', 'placeholder' => 'Ej: Seminario / Curso / Taller'],
+            'campo_2' => ['label' => 'Tema de Evento', 'placeholder' => 'Ej: Estadística Aplicada'],
+        ]],
+        4 => ['titulo' => 'PARTICIPANTE EN FERIAS CIENTÍFICAS', 'icono' => 'fa-flask', 'campos' => [
+            'campo_1' => ['label' => 'Nombre de la Feria', 'placeholder' => 'Ej: Feria de Ciencias UATF'],
+            'campo_2' => ['label' => 'Tema Presentado',    'placeholder' => 'Ej: Energías renovables'],
+        ]],
+        5 => ['titulo' => 'PRODUCCIÓN INTELECTUAL', 'icono' => 'fa-book', 'campos' => [
+            'campo_1' => ['label' => 'Documento Publicado', 'placeholder' => 'Ej: Artículo científico en Revista XYZ'],
+        ]],
+        6 => ['titulo' => 'DISERTANTE CURSOS DE FORMACIÓN I+D', 'icono' => 'fa-lightbulb-o', 'campos' => [
+            'campo_1' => ['label' => 'Tema', 'placeholder' => 'Ej: Metodología de investigación'],
+        ]],
+        7 => ['titulo' => 'PARTICIPANTE DE CURSOS DE FORMACIÓN I+D', 'icono' => 'fa-pencil', 'campos' => [
+            'campo_1' => ['label' => 'Evento', 'placeholder' => 'Ej: Curso de Formación en I+D'],
+        ]],
     ];
 @endphp
 
@@ -39,30 +57,22 @@
                     <p class="text-muted font-weight-bold" style="margin-bottom:10px;">
                         Seleccione una sección para completar su Curriculum Vitae:
                     </p>
-
                     <div class="row" style="margin-bottom:20px;">
                         <div class="col-xs-12">
-                            <div class="btn-group" style="flex-wrap:wrap; display:flex; gap:4px;">
-                                @foreach($secciones as $numero => $seccion)
-                                    <button class="btn btn-default btn-num" type="button" data-target="sec-{{ $numero }}">
-                                        {{ $numero }}
-                                    </button>
-                                @endforeach
+                            <div class="btn-group">
+                                <button id="dropdown-label" data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
+                                    <span id="dropdown-text">Seleccionar sección</span> <span class="caret"></span>
+                                </button>
 
-                                <div class="btn-group">
-                                    <button id="dropdown-label" data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
-                                        <span id="dropdown-text">Seleccionar sección</span> <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        @foreach($secciones as $numero => $seccion)
-                                            <li>
-                                                <a href="#" class="dropdown-section-link" data-target="sec-{{ $numero }}">
-                                                    {{ $numero }} · {{ $seccion['titulo'] }}
-                                                </a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
+                                <ul class="dropdown-menu">
+                                    @foreach($secciones as $numero => $seccion)
+                                        <li>
+                                            <a href="#" class="dropdown-section-link" data-target="sec-{{ $numero }}">
+                                                {{ $numero }} · {{ $seccion['titulo'] }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -85,13 +95,13 @@
 
                                     <div class="form-group">
                                         <label>Gestión:</label>
-                                        <input type="text" class="form-control" name="gestion">
+                                        <input type="text" class="form-control" name="gestion" placeholder="Ej: 2023">
                                     </div>
 
-                                    @foreach($seccion['campos'] as $campo => $label)
+                                    @foreach($seccion['campos'] as $nombre_campo => $config)
                                         <div class="form-group">
-                                            <label>{{ $label }}:</label>
-                                            <input type="text" class="form-control" name="{{ $campo }}">
+                                            <label>{{ $config['label'] }}:</label>
+                                            <input type="text" class="form-control" name="{{ $nombre_campo }}" placeholder="{{ $config['placeholder'] }}">
                                         </div>
                                     @endforeach
 
@@ -112,8 +122,8 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Gestión</th>
-                                                @foreach($seccion['campos'] as $label)
-                                                    <th>{{ $label }}</th>
+                                                @foreach($seccion['campos'] as $nombre_campo => $config)
+                                                    <th>{{ $config['label'] }}</th>
                                                 @endforeach
                                                 <th>Acciones</th>
                                             </tr>
@@ -124,14 +134,14 @@
                                                     <td class="row-number">{{ $index + 1 }}</td>
 
                                                     <td>
-                                                        <span class="text-value" data-field="gestion">{{ $detalle->gestion }}</span>
-                                                        <input type="text" class="form-control edit-input" name="gestion" value="{{ $detalle->gestion }}" style="display:none;">
+                                                        <span class="text-value" data-field="gestion">{{ $detalle->gestion ?? '' }}</span>
+                                                        <input type="text" class="form-control edit-input" name="gestion" value="{{ $detalle->gestion ?? '' }}" style="display:none;" placeholder="Ej: 2023">
                                                     </td>
 
-                                                    @foreach($seccion['campos'] as $campo => $label)
+                                                    @foreach($seccion['campos'] as $nombre_campo => $config)
                                                         <td>
-                                                            <span class="text-value" data-field="{{ $campo }}">{{ $detalle->$campo }}</span>
-                                                            <input type="text" class="form-control edit-input" name="{{ $campo }}" value="{{ $detalle->$campo }}" style="display:none;">
+                                                            <span class="text-value" data-field="{{ $nombre_campo }}">{{ $detalle->$nombre_campo ?? '' }}</span>
+                                                            <input type="text" class="form-control edit-input" name="{{ $nombre_campo }}" value="{{ $detalle->$nombre_campo ?? '' }}" style="display:none;" placeholder="{{ $config['placeholder'] }}">
                                                         </td>
                                                     @endforeach
 
@@ -176,10 +186,14 @@
 document.addEventListener('DOMContentLoaded', function () {
     const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     const sections = document.querySelectorAll('.form-section');
-    const buttons = document.querySelectorAll('.btn-num');
     const dropdownLinks = document.querySelectorAll('.dropdown-section-link');
     const dropdownText = document.getElementById('dropdown-text');
+    
     const sectionFields = @json(collect($secciones)->mapWithKeys(fn($s, $n) => [$n => array_keys($s['campos'])]));
+
+    const sectionPlaceholders = @json(collect($secciones)->mapWithKeys(fn($s, $n) => [
+        $n => collect($s['campos'])->mapWithKeys(fn($c, $k) => [$k => $c['placeholder'] ?? ''])->toArray()
+    ]));
 
     function showAlert(message, type = 'success') {
         const alert = document.getElementById('cv-alert');
@@ -197,16 +211,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const target = document.getElementById(targetId);
         if (target) target.style.display = 'block';
-
-        buttons.forEach(button => {
-            button.classList.remove('btn-primary');
-            button.classList.add('btn-default');
-
-            if (button.dataset.target === targetId) {
-                button.classList.remove('btn-default');
-                button.classList.add('btn-primary');
-            }
-        });
     }
 
     function refreshNumbers(tbody) {
@@ -224,10 +228,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         fields.forEach(field => {
             const value = detalle[field] || '';
+            const placeholder = field === 'gestion' ? 'Ej: 2023' : (sectionPlaceholders[section]?.[field] || '');
             html += `
                 <td>
                     <span class="text-value" data-field="${field}">${value}</span>
-                    <input type="text" class="form-control edit-input" name="${field}" value="${value}" style="display:none;">
+                    <input type="text" class="form-control edit-input" name="${field}" value="${value}" style="display:none;" placeholder="${placeholder}">
                 </td>
             `;
         });
@@ -253,12 +258,6 @@ document.addEventListener('DOMContentLoaded', function () {
         row.querySelector('.btn-save').style.display = editing ? 'inline-block' : 'none';
         row.querySelector('.btn-cancel').style.display = editing ? 'inline-block' : 'none';
     }
-
-    buttons.forEach(button => {
-        button.addEventListener('click', function () {
-            showSection(this.dataset.target);
-        });
-    });
 
     dropdownLinks.forEach(link => {
         link.addEventListener('click', function (event) {

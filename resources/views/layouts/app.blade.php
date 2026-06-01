@@ -15,6 +15,8 @@
 
     <!-- Custom Theme -->
     <link href="{{ asset('build/css/custom.min.css') }}" rel="stylesheet">
+
+    @stack('styles')
 </head>
 
 <body class="nav-md">
@@ -32,7 +34,7 @@
         <div class="right_col" role="main">
             @yield('content')
         </div>
-    
+
         {{-- FOOTER --}}
         @include('partials.footer')
 
@@ -47,7 +49,30 @@
 
 <!-- Custom Theme -->
 <script src="{{ asset('build/js/custom.min.js') }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('#sidebar-menu li > a').forEach(function (link) {
+        const submenu = link.parentElement.querySelector(':scope > ul.child_menu');
 
+        if (!submenu) return;
+
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            const parentLi = link.parentElement;
+            const isOpen = parentLi.classList.contains('active');
+
+            if (isOpen) {
+                parentLi.classList.remove('active');
+                submenu.style.display = 'none';
+            } else {
+                parentLi.classList.add('active');
+                submenu.style.display = 'block';
+            }
+        });
+    });
+});
+</script>
 @stack('scripts')
 </body>
 </html>
