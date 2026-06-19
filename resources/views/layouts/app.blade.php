@@ -29,10 +29,13 @@
 
         {{-- TOPBAR --}}
         @include('partials.topbar')
+        
 
         {{-- CONTENIDO DINÁMICO --}}
+        
         <div class="right_col" role="main">
-            @yield('content')
+            @include('partials.tabs-postulacion')
+            @yield('content')            
         </div>
 
         {{-- FOOTER --}}

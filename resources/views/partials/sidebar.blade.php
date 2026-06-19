@@ -33,36 +33,10 @@
 
                     <ul class="nav child_menu">
                         <li>
-                            <a href="javascript:void(0)">
+                            <a href="">
                                 BECA INVESTIGACION
-                                <span class="fa fa-chevron-down"></span>
+                                <span class="fa fa-chevron"></span>
                             </a>
-
-                            <ul class="nav child_menu">
-                                <li class="sub_menu">
-                                    <a href="{{ isset($postulacion) ? route('formulario-postulacion.show', $postulacion->id) : '#' }}">
-                                        DATOS DE INVESTIGACION
-                                    </a>
-                                </li>
-
-                                <li class="sub_menu">
-                                    <a href="{{ isset($postulacion) ? route('cronograma.create', $postulacion->id) : '#' }}">
-                                        CRONOGRAMA DE ACTIVIDADES
-                                    </a>
-                                </li>
-
-                                <li class="sub_menu">
-                                    <a href="{{ isset($estudiante) ? route('curriculum.create', $estudiante->ru) : '#' }}">
-                                        CURRICULUM VITAE-C.V.
-                                    </a>
-                                </li>
-
-                                <li class="sub_menu">
-                                    <a href="{{ isset($estudiante) ? route('historial.index', $estudiante->ru) : '#' }}">
-                                        HISTORIAL
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </li>
@@ -71,10 +45,6 @@
           </ul>
         </div>
       </div>
-                        <!-- /sidebar menu -->
-
-                        <!-- /menu footer buttons -->
-                      
-                        <!-- /menu footer buttons -->
+                       
                       </div>
                     </div>
